@@ -85,6 +85,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${unbounded.variable} ${manrope.variable}`}>
       <head>
+        <meta name="yandex-verification" content="9ad7a0207d2fb69c" />
         {/* Дополнительные пользовательские теги */}
         <link rel="canonical" href={SITE_URL} />
         <meta name="theme-color" content="#0e0e14" />
