@@ -1,0 +1,619 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   Kush — design tokens
+   ============================================================ */
+:root {
+  --kush-ink: #0e0e14;
+  --kush-ink-soft: #17171f;
+  --kush-ink-line: #26262f;
+  --kush-gold: #e7b84c;
+  --kush-gold-soft: #f4ce6b;
+  --kush-felt: #1f8a5f;
+  --kush-felt-soft: #2aa877;
+  --kush-cream: #f5f0e6;
+  --kush-ash: #9a9aa5;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--kush-ink);
+  color: var(--kush-cream);
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), var(--font-body), system-ui, sans-serif;
+  line-height: 1.15;
+  font-weight: 700;
+  margin: 0;
+  color: var(--kush-cream);
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+/* ============================================================
+   Layout shell
+   ============================================================ */
+.kush-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.kush-main {
+  flex: 1 0 auto;
+}
+
+.kush-wrap {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* ============================================================
+   Header / nav
+   ============================================================ */
+.kush-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(14, 14, 20, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--kush-ink-line);
+}
+
+.kush-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 64px;
+}
+
+.kush-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+  color: var(--kush-cream);
+}
+
+.kush-brand__mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 25%, var(--kush-gold-soft), var(--kush-gold) 70%);
+  color: #14100a;
+  font-weight: 900;
+  font-size: 1.05rem;
+  box-shadow: 0 0 0 2px rgba(231, 184, 76, 0.25);
+}
+
+.kush-nav {
+  display: none;
+  align-items: center;
+  gap: 22px;
+}
+
+.kush-nav__link {
+  font-size: 0.92rem;
+  color: var(--kush-ash);
+  transition: color 0.2s ease;
+}
+
+.kush-nav__link:hover {
+  color: var(--kush-cream);
+}
+
+.kush-header__cta {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .kush-nav {
+    display: flex;
+  }
+  .kush-header__cta {
+    display: inline-flex;
+  }
+}
+
+/* ============================================================
+   Buttons / actions
+   ============================================================ */
+.kush-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 12px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background-color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.kush-action:active {
+  transform: translateY(1px);
+}
+
+.kush-action--solid {
+  background: linear-gradient(180deg, var(--kush-gold-soft), var(--kush-gold));
+  color: #171006;
+  box-shadow: 0 8px 24px rgba(231, 184, 76, 0.28);
+}
+
+.kush-action--solid:hover {
+  background: linear-gradient(180deg, #f8d77e, var(--kush-gold-soft));
+}
+
+.kush-action--line {
+  background: transparent;
+  color: var(--kush-cream);
+  border-color: var(--kush-ink-line);
+}
+
+.kush-action--line:hover {
+  border-color: var(--kush-gold);
+  color: var(--kush-gold);
+}
+
+.kush-action--felt {
+  background: linear-gradient(180deg, var(--kush-felt-soft), var(--kush-felt));
+  color: #eafff5;
+  box-shadow: 0 8px 24px rgba(31, 138, 95, 0.3);
+}
+
+.kush-action--wide {
+  width: 100%;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+.kush-hero {
+  position: relative;
+  padding: 48px 0 56px;
+  overflow: hidden;
+}
+
+.kush-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.kush-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--kush-ink-line);
+  background: var(--kush-ink-soft);
+  font-size: 0.82rem;
+  color: var(--kush-gold);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.kush-hero__title {
+  font-size: clamp(2.1rem, 8vw, 4rem);
+  letter-spacing: -0.02em;
+  margin: 18px 0 16px;
+}
+
+.kush-hero__title em {
+  font-style: normal;
+  color: var(--kush-gold);
+}
+
+.kush-hero__lead {
+  font-size: 1.05rem;
+  color: var(--kush-ash);
+  max-width: 34rem;
+  margin-bottom: 24px;
+}
+
+.kush-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.kush-hero__media {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--kush-ink-line);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.kush-hero__media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.kush-hero__badge {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: rgba(14, 14, 20, 0.82);
+  border: 1px solid rgba(231, 184, 76, 0.35);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--kush-gold);
+}
+
+@media (min-width: 900px) {
+  .kush-hero {
+    padding: 72px 0 80px;
+  }
+  .kush-hero__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+  }
+  .kush-hero__media img {
+    aspect-ratio: 5 / 4;
+  }
+}
+
+/* ============================================================
+   Sections
+   ============================================================ */
+.kush-section {
+  padding: 56px 0;
+}
+
+.kush-section--soft {
+  background: var(--kush-ink-soft);
+  border-top: 1px solid var(--kush-ink-line);
+  border-bottom: 1px solid var(--kush-ink-line);
+}
+
+.kush-section__head {
+  max-width: 46rem;
+  margin-bottom: 32px;
+}
+
+.kush-section__kicker {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kush-felt-soft);
+  margin-bottom: 10px;
+}
+
+.kush-section__title {
+  font-size: clamp(1.6rem, 5.5vw, 2.4rem);
+  letter-spacing: -0.01em;
+}
+
+.kush-section__lead {
+  margin-top: 14px;
+  font-size: 1.02rem;
+  color: var(--kush-ash);
+}
+
+.kush-section__body {
+  display: grid;
+  gap: 28px;
+}
+
+@media (min-width: 900px) {
+  .kush-section {
+    padding: 80px 0;
+  }
+  .kush-section__body--split {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+  }
+}
+
+/* ============================================================
+   Media (images)
+   ============================================================ */
+.kush-media {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--kush-ink-line);
+  background: var(--kush-ink-soft);
+}
+
+.kush-media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* ============================================================
+   Grid of tiles
+   ============================================================ */
+.kush-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .kush-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .kush-grid--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.kush-tile {
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--kush-ink-soft);
+  border: 1px solid var(--kush-ink-line);
+}
+
+.kush-tile__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(231, 184, 76, 0.12);
+  color: var(--kush-gold);
+  margin-bottom: 14px;
+}
+
+.kush-tile__title {
+  font-size: 1.08rem;
+  margin-bottom: 8px;
+}
+
+.kush-tile__text {
+  font-size: 0.95rem;
+  color: var(--kush-ash);
+}
+
+/* ============================================================
+   Steps
+   ============================================================ */
+.kush-steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  counter-reset: kushstep;
+}
+
+@media (min-width: 640px) {
+  .kush-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.kush-step {
+  position: relative;
+  padding: 22px;
+  border-radius: 16px;
+  background: var(--kush-ink-soft);
+  border: 1px solid var(--kush-ink-line);
+}
+
+.kush-step__num {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--kush-gold-soft), var(--kush-gold));
+  color: #171006;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.kush-step__title {
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.kush-step__text {
+  font-size: 0.93rem;
+  color: var(--kush-ash);
+}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.kush-faq {
+  display: grid;
+  gap: 12px;
+}
+
+.kush-faq__item {
+  border: 1px solid var(--kush-ink-line);
+  border-radius: 14px;
+  background: var(--kush-ink-soft);
+  overflow: hidden;
+}
+
+.kush-faq__item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px 20px;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.kush-faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.kush-faq__item summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--kush-gold);
+  transition: transform 0.2s ease;
+}
+
+.kush-faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.kush-faq__a {
+  padding: 0 20px 18px;
+  font-size: 0.95rem;
+  color: var(--kush-ash);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.kush-footer {
+  border-top: 1px solid var(--kush-ink-line);
+  background: var(--kush-ink-soft);
+  padding: 48px 0 40px;
+}
+
+.kush-footer__grid {
+  display: grid;
+  gap: 28px;
+}
+
+.kush-footer__brand {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--kush-cream);
+  margin-bottom: 10px;
+}
+
+.kush-footer__note {
+  font-size: 0.9rem;
+  color: var(--kush-ash);
+  max-width: 30rem;
+}
+
+.kush-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kush-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--kush-ink-line);
+  background: var(--kush-ink);
+  color: var(--kush-ash);
+  font-size: 0.85rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.kush-tag:hover {
+  color: var(--kush-gold);
+  border-color: var(--kush-gold);
+}
+
+.kush-footer__bottom {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--kush-ink-line);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--kush-ash);
+}
+
+@media (min-width: 900px) {
+  .kush-footer__grid {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: start;
+  }
+  .kush-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
